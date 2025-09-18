@@ -28,7 +28,7 @@ struct BookDetailView: View {
                         .fontWeight(.bold)
                         .foregroundColor(.primary)
                     
-                    //Text("by \(book.author)")
+          
                         .font(.title3)
                         .foregroundColor(.secondary)
                 }
@@ -39,14 +39,14 @@ struct BookDetailView: View {
                     // Star Rating
                     HStack(spacing: 4) {
                         ForEach(1...5, id: \.self) { star in
-                            Image(systemName: star <= Int(book.rating) ? "star.fill" : "star")
+                            Image(systemName: star <= Int(book.rating ?? nil ? "star.fill" : "star")
                                 .foregroundColor(.yellow)
                                 .font(.title3)
                         }
                     }
                     
                     // Numeric Rating
-                    Text(String(format: "%.1f/5", book.rating))
+                    Text(String(format: "%.1f/5", book.rating!))
                         .font(.title3)
                         .fontWeight(.semibold)
                         .foregroundColor(.primary)
@@ -79,13 +79,13 @@ struct BookDetailView: View {
                         .font(.headline)
                         .foregroundColor(.primary)
                     
-                    if book.review.isEmpty {
+                    if book.review!.isEmpty {
                         Text("No review yet")
                             .font(.body)
                             .foregroundColor(.secondary)
                             .italic()
                     } else {
-                        Text(book.review)
+                        Text(book.review!)
                             .font(.body)
                             .foregroundColor(.primary)
                             .lineSpacing(6)
