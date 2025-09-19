@@ -26,6 +26,8 @@ func getBooks() -> [Book] {
              rating: 4.5,
              review: "Greatest of all time, but the worst book"
             )
+        Book(title: "Empty book", 
+            )
     ]
 }
 //

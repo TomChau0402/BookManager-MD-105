@@ -9,20 +9,23 @@ import SwiftUI
 
 
 struct ContentView: View {
-    let books = getBooks()
+    @State var books = getBooks()
+    
+    
     var body: some View {
-        NavigationStack {
-            List(books, id: \.self.id) { bookItem in
-                NavigationLink(destination: BookDetailView(book: bookItem)) {
-                    BookListItemView(book: bookItem)
+        TabView {
+            BookListItemView(books: $books)
+                .tabItem {
+                    Label("Books", systemImage: "book")
+                }
+            FavoritesView(books: $books)
+                .tabItem {
+                    Label("Favorites", systemImage: "heart.fill")
+                }
                 }
             }
             
-            .navigationBarTitle("Book Manager")
-            Spacer()
             
-        }
-    }
 }
 #Preview {
     ContentView()

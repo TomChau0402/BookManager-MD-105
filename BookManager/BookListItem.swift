@@ -7,6 +7,8 @@
 import SwiftUI
 
 struct BookListItemView: View {
+    @Binding var Book: [Book]
+    @State var showDetail: Bool = false
     var book: Book
     
     var body: some View {
