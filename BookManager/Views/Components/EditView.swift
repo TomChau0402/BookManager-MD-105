@@ -9,6 +9,7 @@ struct EditView: View {
     @Binding var book: Book
     @State private var workingBook: Book
     @Environment(\.dismiss) var dismiss
+    @State private var navigationTitle: String = ""
     
     init(book: Binding<Book>) {
         self._book = book
@@ -34,9 +35,10 @@ struct EditView: View {
                     
                 }
                 Section(header: Text ("My review")) {
-                    StarRatingView( rating: $book.rating)
+                    StarRatingView(rating: $book.rating)
+                    
                     TextEditor(text: $book.review)
-                        .frame((height: 150))
+                    .frame(height: 150)
                         
                     Text("Book Details")
                 }

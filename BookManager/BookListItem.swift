@@ -7,29 +7,30 @@
 import SwiftUI
 
 struct BookListItemView: View {
-    @Binding var Book: [Book]
-    @State var showDetail: Bool = false
-    var book: Book
+    @Binding var books: [Book]
+//    @State var newBook = Book()
+    
+
     
     var body: some View {
-        HStack {
-            Image(book.image)
-                .resizable()
-                .scaledToFit( )
-                .frame(width: 50, height: 50)
-            VStack(alignment: .leading) {
-                Text(book.title)
-                    .border(Color.gray)
-                    .padding()
-                    .cornerRadius(5)
-                Text(book.description)
-                    .font(.system(size: 12))
-                    .foregroundColor(.secondary)
-                
+        NavigationStack {
+            List{
+                ForEach($books, id: \.self.id){ $bookItem in
+                    NavigationLink(destination: BookDetailView(book: $bookItem)){
+                        HStack{
+                            Image(bookItem.image)
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 90, height: 90)
+                            
+                            Text(bookItem.title)
+                        }
+                    
+                    }
+                }
             }
-            
-         
         }
+        
     }
 }
     

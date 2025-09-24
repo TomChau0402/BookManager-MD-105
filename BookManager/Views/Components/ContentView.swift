@@ -7,27 +7,27 @@
 
 import SwiftUI
 
-
 struct ContentView: View {
     @State var books = getBooks()
     
-    
     var body: some View {
-        TabView {
-            BookListItemView(books: $books)
-                .tabItem {
-                    Label("Books", systemImage: "book")
-                }
-            FavoritesView(books: $books)
-                .tabItem {
-                    Label("Favorites", systemImage: "heart.fill")
-                }
-                }
+        NavigationView {
+            TabView {
+                BookListItemView(books: $books)
+                    .tabItem {
+                        Label("Books", systemImage: "book")
+                    }
+                
+                FavoritesView(books: $books)
+                    .tabItem {
+                        Label("Favorites", systemImage: "heart.fill")
+                    }
             }
-            
-            
+            .navigationTitle("My Favorite Books") // Title for the entire app
+        }
+    }
 }
+
 #Preview {
     ContentView()
-    
 }
