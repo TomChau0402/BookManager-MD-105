@@ -10,6 +10,12 @@ struct FavoritesView: View {
     @State var isFilteringSheetPresented: Bool = false
 //    @State var searchGenre: Genre?
     @State var selectedGenre: Genre?
+    @State var selectedReading: ReadingStatus?
+    
+    private var gridLayout:[GridItem] {
+        Array(repeating: GridItem(), count: gridColumns)
+        
+    }
     
     private var favoriteBooks: [Binding<Book>]{
         $books.filter {
