@@ -10,7 +10,7 @@ import Foundation
 struct Book: Identifiable {
     var id =  UUID()
     var title: String
-    var image: String
+    var imageData: Data?
     var description: String
     var author: String
     var rating: Int = 0

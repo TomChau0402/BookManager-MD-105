@@ -1,7 +1,18 @@
 //
 //  Untitled.swift
 //  BookManager
-//
-//  Created by Amy Vu on 9/28/25.
-//
 
+
+import SwiftUI
+
+import Foundation
+
+@Model
+class UploadImage {
+    @Attribute(.externalStorage) var imageData: Data?
+    
+    init(incomingImageData: Data? = nil) {
+        
+        imageData = incomingImageData}
+}
+}
