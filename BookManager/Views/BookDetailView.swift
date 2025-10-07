@@ -5,13 +5,13 @@
 import SwiftUI
 
 struct BookDetailView: View {
-    @Binding var book: Book
-    @State var showCase: Bool = false
     
-    //    var book: Book
+
     
-    var body: some View {
+    var body: PersistentBook{{
         Text("Book details")
+        @Binding var book: Book
+        @State var showCase: Bool = false
         
         
         HStack {

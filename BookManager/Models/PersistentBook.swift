@@ -10,21 +10,22 @@ class PersistentBook {
     var imageData: Data?
     var summary: String
     var author: String
-    var rating: Double
+    var rating: Int
     var review: String
-    var status: ReadingStatus = .unknown
-    var genre: Genre = .unknown
-    var isFavorite: Bool = false
+    var status: ReadingStatus
+    var genre: Genre
+    var isFavorite: Bool
     
-    init(title: String, imageData: Data? = nil, summary: String, author: String, rating: Double, reviewed: String) {
+    init(title: String, imageData: Data? = nil, summary: String = "",  author:
+         String="", rating: Int = 0, review: String = "", status: ReadingStatus = .unknown, genre: Genre = .unknown, isFavorite: Bool = false) {
         self.title = title
         self.imageData = imageData
-        self.description = description
+        self.summary = summary
         self.author = author
         self.rating = rating
         self.review = review
-        self.status = .unknown
-        self.genre = .unknown
+        self.status = status
+        self.genre = genre
         self.isFavorite = false
     }
     

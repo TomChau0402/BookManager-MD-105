@@ -10,7 +10,7 @@ struct FavoritesView: View {
     @State var isFilteringSheetPresented: Bool = false
 //    @State var searchGenre: Genre?
     @State var selectedGenre: Genre?
-    @State var selectedReading: ReadingStatus?
+    @State var selectedStatus: ReadingStatus?
     
     private var gridLayout:[GridItem] {
         Array(repeating: GridItem(), count: gridColumns)
@@ -53,5 +53,16 @@ struct FavoritesView: View {
 }
 
  
+
+func filterFavoritesBooks(books: [PersistentBook] selectedGenre: Genre?, selectedStatus; ReadingStatus?) -> [PersistentBook] {
+    return books.filter {
+        $0.isFavorite
+        && (
+            selectedGenre == nil || $0.genre == selectedGenre
+        )&&(
+            selectedStatus == nil || $0.readingStatus == selectedStatus
+        )
+}
+}
 //
 

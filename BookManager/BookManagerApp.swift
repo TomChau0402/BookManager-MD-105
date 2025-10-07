@@ -11,7 +11,7 @@ import SwiftUI
 struct BookManagerApp: App {
     let modelContainer: ModelContainer
     
-    var body: some Scent { Scene {
+    var body: some Scene { Scene {
         WindowGroup {
             ContentView()
                 .modelContainer(modelContainer)
@@ -22,8 +22,12 @@ struct BookManagerApp: App {
         
         
         init() {
+            do {
+                modelContainer = try ModelContainer (modelContainerfor:
+                                                        UploadImage.self,
+                PersistentBook)
+            }
             
-            fatalError("failed to load model container")
         }
     }
 }

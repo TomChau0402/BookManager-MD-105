@@ -8,30 +8,29 @@ struct BookListView: View {
     @Query var books:[PersistentBook]
     @State var showAddView: Bool = false
     @State var newBook = Book(title: "")
+    @Environment(\.modelContext) private var modelContext
     
     
     var body: some View {
         NavigationStack {
-            List {
-                ForEach(books) { book in
-                    NavigationLink(destination: BookDetailView(book:
-                                                                
-                                                                $bookItem)) {
-                        BookListView.self
-                            .navigationTitle("Books")
-                            .toolbar {
-                                ToolbarContent {
-                                    Button(action: {
-                                        self.showAddView.toggle()
-                                    }) {
-                                        Image(systemName: "plus")
-                                    }
-                                }
-                            }
-                    }
-                    }
+            List { books, id: \.self.id) { bookItem in
+                NavigationLink(destination: BookDetailView(book:booItem)){
+                    BookListItemView(book: bookItem)
                 }
-         
-        }
-    }
-}
+                }
+            .navigationBarTitle("Book Manager")
+            .navigationBarItem(trailing: Button("Add", action: {
+                showAdddView.toggle()
+            }))
+            .sheet(isPresented: $showAddView,) {} content:{
+                AddEditView(book: $newBook, onSave: {
+                    
+                }
+            }
+            }) {
+                
+            }
+                
+            }
+
+      
