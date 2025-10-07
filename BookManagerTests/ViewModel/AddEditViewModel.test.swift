@@ -28,7 +28,29 @@ struct AddEditeViewModelTests {
     }
     @Test("ViewModel initialisation correctly for an existing book")
     func testExistingBookInitialization() throws {
+        // phase 1: arrange
+        let container = try ModeContainer(
+            for: PersistentBook.self,
+            configurations: .init(isStoredInMemoryOnly: true))
+        let modelContext = container.mainContext
         
+        let book = PersistentBook(
+            title: "1984",
+            author: "George Orwell",
+            genre: .fantasy)
+        // phas 2 Act
+        let viewModel = AddEditeViewModel(book: book, modelContext:
+                                            modeContext)
+        // phase 3: Assert
+        #expect (viewModel.title == "test book")
+        #expect(viewModel.author == "George Orwell")
+        #expect(viewModel.navigationTitle == "Edit Book")
+        #expect(!viewModel.isSaveButtonDisabled)
+        
+        //check small changes
+        //Act 2
+        
+     
     }
     @Test("ViewMode creates a new book correctly")
     func testCreateNewBook() throws {
