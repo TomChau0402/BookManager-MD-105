@@ -24,8 +24,8 @@ struct SettingsView: View {
                     }
                 }
                 Section(header: Text("Grid")) {
-                    Stepper("Columns: \(gridColumn)", value:
-                                $gridColumn, in:2...4)
+                    Stepper("Columns: \(gridColumns)", value:
+                                $gridColumns, in:2...4)
                 }
             }
             

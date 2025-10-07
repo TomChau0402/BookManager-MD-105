@@ -11,7 +11,7 @@ struct Book: Identifiable {
     var id =  UUID()
     var title: String
     var imageData: Data?
-    var description: String
+    var summary: String
     var author: String
     var rating: Int = 0
     var review: String = ""

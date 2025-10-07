@@ -54,15 +54,15 @@ struct FavoritesView: View {
 
  
 
-func filterFavoritesBooks(books: [PersistentBook] selectedGenre: Genre?, selectedStatus; ReadingStatus?) -> [PersistentBook] {
+func filterFavoritesBooks(books: [PersistentBook], selectedGenre: Genre?, selectedStatus: ReadingStatus?) -> [PersistentBook] {
     return books.filter {
         $0.isFavorite
         && (
             selectedGenre == nil || $0.genre == selectedGenre
         )&&(
-            selectedStatus == nil || $0.readingStatus == selectedStatus
+            selectedStatus == nil || $0.status == selectedStatus
         )
-}
+    }
 }
 //
 

@@ -5,17 +5,23 @@
 import SwiftUI
 
 struct BookDetailView: View {
+    @Binding var book: PersistentBook
+    @State var showCase: Bool = false
     
+    init(book: PersistentBook) {
+        self.book = book
+//        isFavorite =
+    }
 
     
-    var body: PersistentBook{{
+    var body: some View{
         Text("Book details")
-        @Binding var book: Book
-        @State var showCase: Bool = false
-        
-        
+
         HStack {
-            Image(book.image)
+//            Image(book.image)
+            Image(
+                uiImage: book.imageData != nil ? UIImage(data: book.imageData!)! : UIImage()
+            )
                 .resizable()
                 .scaledToFit( )
                 .frame(width: 50, height: 50)
@@ -26,7 +32,7 @@ struct BookDetailView: View {
                     .padding()
                     .cornerRadius(5)
                 
-                Text(book.description)
+                Text(book.summary)
                     .font(.system(size: 12))
                     .foregroundColor(.secondary)
                 

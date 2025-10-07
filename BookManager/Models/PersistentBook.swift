@@ -26,7 +26,7 @@ class PersistentBook {
         self.review = review
         self.status = status
         self.genre = genre
-        self.isFavorite = false
+        self.isFavorite = isFavorite
     }
     
 }

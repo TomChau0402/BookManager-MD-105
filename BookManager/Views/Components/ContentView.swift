@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     @State var books = getBooks()
-    @AppStorage(SETTING_THEME_KEY) var them: Theme = .light
+    @AppStorage(SETTING_THEME_KEY) var theme: Theme = .light
     @AppStorage(SETTING_ACCENT_COLOR_KEY) private var
 accentTintColor: Color =
     SETTING_ACCENT_COLOR_DEFAULT_VALUE

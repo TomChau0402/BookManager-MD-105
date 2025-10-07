@@ -7,7 +7,8 @@ import SwiftData
 struct BookListView: View {
     @Query var books:[PersistentBook]
     @State var showAddView: Bool = false
-    @State var newBook = Book(title: "")
+//    @State var newBook = Book(title: "")
+    @State var newBook = PersistentBook()
     @Environment(\.modelContext) private var modelContext
     
     

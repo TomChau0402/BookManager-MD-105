@@ -43,9 +43,10 @@ class AddEditViewModel: ObservableObject {
         }
         
     }
-    func sace () {
+    
+    func save () {
         let isANewBook = bookToEdit == nil
-        let bookToSave: bookToEdit ?? PersistentBook(title:"")
+        let bookToSave = bookToEdit ?? PersistentBook(title:"")
         bookToSave.title = title
         bookToSave.author = author
         bookToSave.summary = summary
