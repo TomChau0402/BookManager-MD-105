@@ -30,7 +30,7 @@ struct EditView: View {
                 Section {
                     TextField("Title of the $workingBook", text: $book.title)
                     TextField("Author of the Book", text: $book.author)
-                    TextEditor(text: $book.description)
+                    TextEditor(text: $book.summary)
                         .frame(height: 150)
                     
                 }

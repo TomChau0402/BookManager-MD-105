@@ -7,7 +7,7 @@
 import SwiftUI
 
 struct BookListItemView: View {
-    @Binding var books: [Book]
+    @Binding var book: [Book]
 //    @State var newBook = Book()
     
 
@@ -15,7 +15,7 @@ struct BookListItemView: View {
     var body: some View {
         NavigationStack {
             List{
-                ForEach($books, id: \.self.id){ $bookItem in
+                ForEach($book, id: \.self.id){ $bookItem in
                     NavigationLink(destination: BookDetailView(book: $bookItem)){
                         HStack{
                             Image(bookItem.image)

@@ -1,40 +1,47 @@
 //
 //  AddEditView.swift
 //  BookManager
+//
+
+
 import SwiftUI
 import SwiftData
 
 struct AddEditView: View {
     
-    @StateObject private var viewModel: AddEditViewModel
-    
+    var book: PersistentBook? = nil
+    @State private var workingBook: PersistentBook
     @Environment(\.dismiss) var dismiss
+    @State private var navigationTitle: String
+    @State private var cover: UIImage? = nil
     
-    init(book: PersistentBook? = nil, modelContext: ModelContext) {
-        _viewModel = StateObject(
-                    wrappedValue: AddEditViewModel(
-                        book: book,
-                        modelContext: modelContext
-                    ))
-            
+    @Environment(\.modelContext) private var modelContext
+    
+    init(book: PersistentBook? = nil) {
+        self.book = book
+        _workingBook = .init(initialValue: book ??
+                             PersistentBook(backingData: <#any BackingData<PersistentBook>#>),
+        self._navigationTitle = State(initialValue: book != nil ?
+                                      "Add a Book" : "Edit a Book")
+        if(book?.imageData != nil) {
+            cover = UIImage(data: book!.imageData!)
+        }
     }
     var body: some View {
         NavigationView {
-            ZStack{
-                LinearGradient(
-                    gradient: Gradient(
-                        colors: [.gray.opacity(0.2), .gray],
-                        startPoint: .top,
-                        endpoint:.bottom)
-                    Form {
-                        Section(header: Text("Book details")) {
-                            TextField("title of the book", text: $viewModel.title)
-                            TextField("author of the book", text: $viewModel.author)
-                            TextField("genre of the book", text: $viewModel.genre)
-                        })
+            Form {
+                Section(header: Text(self.navigationTitle)) {
+                    TextField("Title", text: $workingBook.title)
+                    TextField("Author", text: $workingBook.author)
+                    TextField("ISBN", text: $workingBook.author)
+                    
+                    HStack {
+                        Button("Select a cover") {
+                            
+                        }
                     }
+                }
             }
         }
     }
 }
-

@@ -28,6 +28,11 @@ class PersistentBook {
         self.genre = genre
         self.isFavorite = isFavorite
     }
-    
+    func getNameAndAuthor() -> String {
+        if(!author.isEmpty){
+            return "\(title) by \(author)"
+        }
+        return "\(title) by Unknown Author"
+    }
 }
 
